@@ -1,6 +1,6 @@
 services:
   backup:
-    image: inductiveautomation/ignition:8.1.42
+    image: inductiveautomation/ignition:8.1.45
     hostname: backup
     ports:
       - 9088:8088
@@ -20,7 +20,7 @@ services:
       -m 2048
       -r /restore.gwbk
   master:
-    image: inductiveautomation/ignition:8.1.42
+    image: inductiveautomation/ignition:8.1.45
     hostname: master
     ports:
       - 9090:8088
@@ -48,6 +48,9 @@ services:
       - db-data:/var/lib/mysql
     networks:
       master-network:
+        aliases:
+          - main-db
+      backup-network:
         aliases:
           - main-db
     environment:
