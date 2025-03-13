@@ -1,6 +1,6 @@
 services:
   edge:
-    image: inductiveautomation/ignition:8.1.45
+    image: inductiveautomation/ignition:8.1.42
     hostname: edge
     ports:
       - 9088:8088
@@ -20,7 +20,7 @@ services:
       -m 2048
       -r /restore.gwbk
   central:
-    image: inductiveautomation/ignition:8.1.45
+    image: inductiveautomation/ignition:8.1.42
     hostname: central
     ports:
       - 9090:8088
