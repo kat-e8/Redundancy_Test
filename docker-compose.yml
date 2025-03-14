@@ -1,6 +1,6 @@
 services:
   backup:
-    image: inductiveautomation/ignition:8.1.45
+    image: inductiveautomation/ignition:8.1.42
     hostname: backup
     ports:
       - 9088:8088
@@ -20,7 +20,7 @@ services:
       -m 2048
       -r /restore.gwbk
   master:
-    image: inductiveautomation/ignition:8.1.45
+    image: inductiveautomation/ignition:8.1.42
     hostname: master
     ports:
       - 9090:8088
@@ -58,6 +58,13 @@ services:
       - MARIADB_DATABASE=ignition
       - MARIADB_USER=ignition
       - MARIADB_PASSWORD=ignition
+  proxy:
+    image: nginx:latest
+    ports:
+      - 80:80
+    hostname: rproxy
+    volumes:
+      - ./proxy_init/default.conf:/etc/nginx/conf.d/default.conf
 
 networks:
   backup-network:
